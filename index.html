@@ -92,16 +92,14 @@
         else {
             let bmi = (berat / ((tinggi*tinggi) / 10000)).toFixed(2);
             //Keadaan berdasarkan nilai BMI
-            if (bmi < 18.6) 
-                hasil.innerHTML = "Kurang Berat Badan : " + bmi;
-            else if (bmi >= 18.6 && bmi < 22.9)
-                hasil.innerHTML = "Normal : " + bmi;
-            else if (bmi >= 23 && bmi < 24.9)
-                hasil.innerHTML = "Kelebihan Berat Badan : " + bmi;
+            if (bmi < 18.5) 
+                hasil.innerHTML = "Underweight, BMI Score : " + bmi;
+            else if (bmi >= 18.5 && bmi < 24.9)
+                hasil.innerHTML = "Normal Weight, BMI Score : " + bmi;
             else if (bmi >= 25 && bmi < 29.9)
-                hasil.innerHTML = "Obesitas Tingkat 1 : " + bmi;   
+                hasil.innerHTML = "Overweight, BMI Score : " + bmi;  
             else
-                hasil.innerHTML = "Obesitas Tingkat 2 : " + bmi;     
+                hasil.innerHTML = "Obesity, BMI Score : " + bmi;     
         }    
         
     }
