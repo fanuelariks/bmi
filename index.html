@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+</head>
+<style media="screen">
+    /* Main */
+    body {
+        padding: 0%;
+        text-align: center;
+        font-family: sans-serif;
+        background-image: linear-gradient(135deg, #F2CDA0,#F2EFDC,#DCF2F2,#84C9D9);
+        min-height: 120vh;
+    }
+
+    /* Box */
+    .box {
+        width: 500px;
+        position: absolute;
+        background-color: white;
+        padding: 20px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        border-radius: 20px;
+        box-shadow: 1px 1px 50px #55B3D9;
+    }
+
+    .text{
+        font-family: 'Times New Roman', Times, serif;
+        text-align: left;
+        margin-left: 170px;
+        font-weight: bold;
+    }
+
+    #t, #b {
+        color: black;
+        outline: none;
+        border: none;
+        background: none;
+        border-bottom: 1px solid black;
+    }
+
+    .hasil {
+        color: #55B3D9;
+    }
+
+    #tmbl {
+        margin-top: 10px;
+        border: none;
+        color: black;
+        font-weight: bold;
+        background-image: linear-gradient(135deg, #F2CDA0,#F2EFDC,#DCF2F2,#84C9D9);
+        padding: 10px;
+        width: 100px;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    #tmbl:hover {
+        color: #55B3D9;
+        transition: 0.3s ease-in-out;
+    }
+
+    .info {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 14px;
+    }
+
+    #hasil {
+        color: #55B3D9;
+        font-weight: bold;
+    }
+</style>
+<script type="text/javascript">
+    function BMI() {
+        //Mendapatkan data
+        let tinggi = document.getElementById('t').value;
+        let berat = document.getElementById('b').value;
+        let hasil = document.querySelector("#hasil");
+
+        //Cek Data
+        if (tinggi === "" || isNaN(tinggi))
+            hasil.innerHTML = "Nilai Tinggi Badan Kosong/Tidak Tepat!";
+
+        else if (berat ==="" || isNaN(berat))
+            hasil.innerHTML = "Nilai Berat Badan Kosong/Tidak Tepat!" ; 
+            
+        else {
+            let bmi = (berat / ((tinggi*tinggi) / 10000)).toFixed(2);
+            //Keadaan berdasarkan nilai BMI
+            if (bmi < 18.6) 
+                hasil.innerHTML = "Kurang Berat Badan : " + bmi;
+            else if (bmi >= 18.6 && bmi < 22.9)
+                hasil.innerHTML = "Normal : " + bmi;
+            else if (bmi >= 23 && bmi < 24.9)
+                hasil.innerHTML = "Kelebihan Berat Badan : " + bmi;
+            else if (bmi >= 25 && bmi < 29.9)
+                hasil.innerHTML = "Obesitas Tingkat 1 : " + bmi;   
+            else
+                hasil.innerHTML = "Obesitas Tingkat 2 : " + bmi;     
+        }    
+        
+    }
+</script>
+<body>
+    <div class="box">
+        <h2>Kalkulator BMI</h2>
+        <p class="text">Tinggi</p>
+        <input type="text" id="t" placeholder="Ketik Di Sini" >
+        <p class="text">Berat</p>
+        <input type="text" id="b" placeholder="Ketik Di Sini">
+        <p id="hasil"></p>   
+        <button id="tmbl" onclick="BMI()">Hitung</button>   
+        <p class="info">Masukkan Tinggi Badan (dalam cm) serta Berat Badan (dalam kg) Anda</p>  
+    </div> 
+</body>
+</html>
